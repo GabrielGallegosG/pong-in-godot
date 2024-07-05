@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv6ijjudlkxnp"]
+[gd_scene load_steps=7 format=3 uid="uid://bv6ijjudlkxnp"]
 
+[ext_resource type="Script" path="res://level.gd" id="1_f2edo"]
 [ext_resource type="PackedScene" uid="uid://bfxy4n6v11tym" path="res://player.tscn" id="1_v0x24"]
+[ext_resource type="Script" path="res://opponent.gd" id="2_0rteb"]
 [ext_resource type="PackedScene" uid="uid://cqqlpdk88u1k0" path="res://ball.tscn" id="2_qjm1b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpewv"]
@@ -10,6 +12,7 @@ size = Vector2(1920, 50)
 size = Vector2(50, 1080)
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_f2edo")
 
 [node name="TopWall" type="StaticBody2D" parent="."]
 
@@ -40,6 +43,33 @@ shape = SubResource("RectangleShape2D_75wn5")
 [node name="Player" parent="." instance=ExtResource("1_v0x24")]
 position = Vector2(50, 500)
 
+[node name="Opponent" parent="." instance=ExtResource("1_v0x24")]
+position = Vector2(1870, 500)
+script = ExtResource("2_0rteb")
+
 [node name="Ball" parent="." instance=ExtResource("2_qjm1b")]
 position = Vector2(911, 528)
 scale = Vector2(0.1, 0.1)
+
+[node name="PlayerScore" type="Label" parent="."]
+offset_right = 960.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 32
+text = "Player score
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OpponentScore" type="Label" parent="."]
+custom_minimum_size = Vector2(960, 1080)
+offset_left = 960.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_font_sizes/font_size = 32
+text = "Opponent score
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Player\'sArch" to="." method="_on_players_arch_body_entered"]
+[connection signal="body_entered" from="Enemy\'sArch2" to="." method="_on_enemys_arch_2_body_entered"]
