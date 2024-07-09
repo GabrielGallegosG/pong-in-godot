@@ -71,5 +71,8 @@ text = "Opponent score
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RestartTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Player\'sArch" to="." method="_on_players_arch_body_entered"]
 [connection signal="body_entered" from="Enemy\'sArch2" to="." method="_on_enemys_arch_2_body_entered"]
+[connection signal="timeout" from="RestartTimer" to="Ball" method="_on_restart_timer_timeout"]

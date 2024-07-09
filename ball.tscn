@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqqlpdk88u1k0"]
+[gd_scene load_steps=5 format=3 uid="uid://cqqlpdk88u1k0"]
 
 [ext_resource type="Script" path="res://ball.gd" id="1_d1out"]
 [ext_resource type="Texture2D" uid="uid://dbvm1qtybeyi4" path="res://Assets/ball.png" id="1_p8wpm"]
+[ext_resource type="AudioStream" uid="uid://dcpbwgma535xr" path="res://Assets/audioBounce.ogg" id="3_3kvg7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sugbl"]
 radius = 391.0
@@ -15,3 +16,6 @@ texture = ExtResource("1_p8wpm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sugbl")
+
+[node name="audioBounce" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3kvg7")
